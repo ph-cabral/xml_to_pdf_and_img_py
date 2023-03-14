@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 style="color: #5e9ca0; text-align: center; margin-bottom: -15px">{{nombre}}</h1>
+    <p>{{razon_social}}</p>
+    <p>C.I.U.T. Nro.: {{cuit}}</p>
+    <p>Ing. Brutos: {{ing_brutos}}</p>
+
+    <p>{{direccion}}</p>
+    <p>{{lugar}}</p>
+    <p>Inicio de Actividades: {{inicio}}</p>
+    <p></p>
+    <p>Habilitación: COMPROBANTES CLASE "A"</p>
+    <hr />
+    <p style="text-align: center">
+      <strong>Cód. - INFORME DIARIO DE CIERRE N° {{numero_z}} </strong>
+    </p>
+    <p>P.V.N° {{pv}}</p>
+    <p>Fecha: {{fecha_cierre}} Hora: {{hora_cierre}}</p>
+    <hr />
+    <p>FECHA DE LA JORNADA: {{fecha_jornada}}</p>
+    <p style="text-align: center"><strong>COMPROBANTES FISCALES</strong></p>
+    <p style="text-align: center">
+      <strong><br />INFORMACION GLOBAL</strong>
+    </p>
+    <table
+      style="border-collapse: collapse; width: 100%"
+      border="0"
+    >
+      <tbody>
+        <tr>
+          <td>GRAVADO</td>
+          <td >{{gravado_global}}</td>
+          <td>NO GRAVADO</td>
+          <td >{{no_gravado_global}}</td>
+        </tr>
+        <tr>
+          <td>EXENTO</td>
+          <td >{{exento_global}}</td>
+          <td>DESCUENTOS</td>
+          <td >{{descuentos_global}}</td>
+        </tr>
+        <tr>
+          <td>COMP. GENERADOS</td>
+          <td >{{generado_global}}</td>
+          <td>COMP. CANCELADOS</td>
+          <td >{{cancelados_global}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+       
+        
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="border-collapse: collapse; width: 100%" border="0">
+      <tbody>
+        <tr>
+          <td><strong>IMPORTE TOTAL DE COMPROBANTES FISCALES</strong></td>
+          <td >{{total_fiscal}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="text-align: center">
+      <strong>COMPROBANTES NO FISCALES HOMOLOGADOS</strong>
+    </p>
+   
+    <table style="border-collapse: collapse; width: 100%" border="0">
+      <tbody>
+        <tr>
+          <td><strong>IMPORTE TOTAL DE COMPROBANTES NO FISCALES</strong></td>
+          <td >{{total_no_fiscal}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+
+</tbody>
+</table>
+</body>
+</html>

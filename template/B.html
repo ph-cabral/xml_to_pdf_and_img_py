@@ -1,0 +1,314 @@
+
+          <!DOCTYPE html>
+            <html lang="es">
+              <head>
+                <meta charset="UTF-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Document</title>
+              </head>
+              <body>
+                <h1 style="color: #5e9ca0; text-align: center; margin-bottom: -15px">{{nombre}}</h1>
+                <p>{{razon_social}}</p>
+                <p>C.I.U.T. Nro.: {{cuit}}</p>
+                <p>Ing. Brutos: {{ing_brutos}}</p>
+            
+                <p>{{direccion}}</p>
+                <p>{{lugar}}</p>
+                <p>Inicio de Actividades: {{inicio}}</p>
+                <p></p>
+                <p>Habilitación: COMPROBANTES CLASE "A"</p>
+                <hr />
+                <p style="text-align: center">
+                  <strong>Cód. - INFORME DIARIO DE CIERRE N° {{numero_z}} </strong>
+                </p>
+                <p>P.V.N° {{pv}}</p>
+                <p>Fecha: {{fecha_cierre}} Hora: {{hora_cierre}}</p>
+                <hr />
+                <p>FECHA DE LA JORNADA: {{fecha_jornada}}</p>
+                <p style="text-align: center"><strong>COMPROBANTES FISCALES</strong></p>
+                <p style="text-align: center">
+                  <strong>082 - TIQUET FACTURA "{{cierre_b}}"</strong>
+                </p>
+                <table
+                  style="border-collapse: collapse; width: 100%"
+                  border="0"
+                >
+                  <tbody>
+                    <tr>
+                      <td style="text-align: justify">PRIMER COMPROBANTE</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{primer_b}}</td>
+                      <td>ULTIMO COMPROBANTE</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{ultimo_b}}</td>
+                    </tr>
+                    <tr>
+                      <td>GRAVADO</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{gravado_b}}</td>
+                      <td>NO GRAVADO</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">
+                        {{no_gravado_b}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>EXENTO</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{exento_b}}</td>
+                      <td>DESCUENTOS</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">
+                        {{descuentos_b}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>COMP. GENERADOS</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{generado_b}}</td>
+                      <td>COMP. CANCELADOS</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">
+                        {{cancelados_b}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>DISCRIMINACION DEL IVA</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>{{disciminacion_iva_b1[0]}}</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">
+                        {{disciminacion_iva_b1[1]}}
+                      </td>
+                      <td>{{disciminacion_iva_b2[0]}}</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">
+                        {{disciminacion_iva_b2[1]}}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>TOTAL DEL IMPORTE DE IVA</strong>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td
+                      style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{total_iva_b}}</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><strong>IMPORTE TOTAL</strong></td>
+                      <td></td>
+                      <td></td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">
+                        {{importe_total_b}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="text-align: center">
+                  <strong><br />INFORMACION GLOBAL</strong>
+                </p>
+                <table
+                  style="border-collapse: collapse; width: 100%"
+                  border="0"
+                >
+                  <tbody>
+                    <tr>
+                      <td>GRAVADO</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{gravado_global}}</td>
+                      <td>NO GRAVADO</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{no_gravado_global}}</td>
+                    </tr>
+                    <tr>
+                      <td>EXENTO</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{exento_global}}</td>
+                      <td>DESCUENTOS</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{descuentos_global}}</td>
+                    </tr>
+                    <tr>
+                      <td>COMP. GENERADOS</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{generado_global}}</td>
+                      <td>COMP. CANCELADOS</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{cancelados_global}}</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>DISCRIMINACION DEL IVA</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>{{disciminacion_iva_global1[0]}}</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{disciminacion_iva_global1[1]}}</td>
+                      <td>{{disciminacion_iva_global2[0]}}</td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{disciminacion_iva_global2[1]}}</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>TOTAL DEL IMPORTE DE IVA</strong>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td style="
+                      text-align: right;
+                      padding-right: 20px;
+                    ">{{total_iva_global}}</td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table style="border-collapse: collapse; width: 100%" border="0">
+                  <tbody>
+                    <tr>
+                      <td><strong>IMPORTE TOTAL DE COMPROBANTES FISCALES</strong></td>
+                      <td ></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p style="text-align: center">
+                  <strong>COMPROBANTES NO FISCALES HOMOLOGADOS</strong>
+                </p>
+                <p style="text-align: center">
+                  <strong>940 - DETALLE DE VENTAS</strong>
+                </p>
+                <table
+                  style="border-collapse: collapse; width: 100%"
+                  border="0"
+                >
+                  <tbody>
+                    <tr >
+                      <td y; height: 18px">
+                        PRIMER COMPROBANTE
+                      </td>
+                      <td
+                        style="
+                          text-align: right;
+                          padding-right: 20px;
+                        "
+                      >
+                        {{primer_detalle}}
+                      </td>
+                      <td >ULTIMO COMPROBANTE</td>
+                      <td
+                        style="
+                          text-align: right;
+                          padding-right: 20px;
+                        "
+                      >
+                        {{ultimo_detalle}}
+                      </td>
+                    </tr>
+                    <tr >
+                      <td >CANTIDAD DE COMPROB.</td>
+                      <td
+                        style="
+                          text-align: right;
+                          padding-right: 20px;
+                        "
+                      >
+                        {{generado_detalle}}
+                      </td>
+                      <td ></td>
+                      <td ></td>
+                    </tr>
+                    <tr >
+                      <td></td>
+                      <td ></td>
+                      <td ></td>
+                      <td ></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table style="border-collapse: collapse; width: 100%" border="0">
+                  <tbody>
+                    <tr>
+                      <td><strong>IMPORTE TOTAL DE COMPROBANTES NO FISCALES</strong></td>
+                      <td >0.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </body>
+            </html>
+          
+      </tbody>
+    </table>
+  </body>
+</html>
