@@ -51,9 +51,17 @@ from wand.image import Image
 # for k, v in {'ñ1': ñ1, 'ñ2': ñ2}.items():
     # for xml in v:
         # print(xml)
-ruta_xml = os.path.join(f"./xmls/ñ1/1651.xml")
-Documento = minidom.parse(ruta_xml).getElementsByTagName('Documento')[-1]
-# print(Documento)
+ruta_xml = os.path.join(f"./xmls/ñ2/1600.xml")
+xmlDoc = minidom.parse(ruta_xml)
+root = xmlDoc.documentElement
+
+etiquetas = root.getElementsByTagName("*")
+for etiqueta in etiquetas:
+    print(etiqueta.nodeName)
+
+
+Documento = minidom.parse(ruta_xml).getElementsByTagName('Documento')
+print(Documento)
 context, numero_z = base(Documento)
 # aca si el len es 0 no tiene valores
 # len == 3, contiene ticket b
@@ -61,20 +69,22 @@ context, numero_z = base(Documento)
 condicion = Documento.getElementsByTagName('CierreDiarioInformacionDocumento')
 totales = Documento.getElementsByTagName('CierreDiarioTotales')
 importe_total = totales[0].getElementsByTagName('TotalFinal')[0].firstChild.data.strip()
+print(condicion)
+
 if len(condicion) == 4:
     d = AB(Documento)
     html = 'AB.html'
 elif len(condicion) == 3 or len(condicion) == 2:
-    if  importe_total == 0:
+    if importe_total == 0:
         d = {
-        'gravado_global': 0.00,
-        'no_gravado_global': 0.00,
-        'exento_global': 0.00,
-        'descuentos_global': 0.00,
-        'generado_global': 0.00,
-        'cancelados_global': 0.00,
-        'total_fiscal': 0.00,
-        'total_no_fiscal': 0.00
+            'gravado_global': ['',1],
+            'no_gravado_global': ['',1],
+            'exento_global': ['',1],
+            'descuentos_global': ['',1],
+            'generado_global': ['',1],
+            'cancelados_global': ['',1],
+            'total_fiscal': ['',1],
+            'total_no_fiscal': ['',1]
         }
         html = 'O.html'
     else:
@@ -82,19 +92,20 @@ elif len(condicion) == 3 or len(condicion) == 2:
         html = 'B.html'
 else:
     d = {
-        'gravado_global': 0.00,
-        'no_gravado_global': 0.00,
-        'exento_global': 0.00,
-        'descuentos_global': 0.00,
-        'generado_global': 0.00,
-        'cancelados_global': 0.00,
-        'total_fiscal': 0.00,
-        'total_no_fiscal': 0.00
+        'gravado_global': ['',0.00],
+        'no_gravado_global': ['',0.00],
+        'exento_global': ['',0.00],
+        'descuentos_global': ['',0.00],
+        'generado_global': ['',0.00],
+        'cancelados_global': ['',0.00],
+        'total_fiscal': ['',0.00],
+        'total_no_fiscal': ['',3333]
     }
     html = 'O.html'
 
 
 context.update(d)
+print(context)
 template_env = jinja2.Environment(loader=jinja2.FileSystemLoader('./template'))
 template = template_env.get_template(html)
 

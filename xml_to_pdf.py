@@ -5,21 +5,14 @@ from script.AB import AB
 from script.B import B
 from script.base import base
 import os
-from wand.image import Image
-import openpyxl
+from tqdm import tqdm
 
 # armo una lista con los xmls que estan dentro de las carpetas
 ñ1 = sorted([f for f in os.listdir("./xmls/ñ1") if f.endswith(".xml")])
 ñ2 = sorted([f for f in os.listdir("./xmls/ñ2") if f.endswith(".xml")])
 
-# Crear un nuevo libro de Excel
-workbook = openpyxl.Workbook()
-
-# Seleccionar la hoja activa
-sheet = workbook.active
-
 # recorro la lista 
-for k, v in {'ñ1': ñ1}.items():
+for k, v in {'ñ1': ñ1, 'ñ2': ñ2}.items():
     for xml in v:
         # selecciono el xml
         ruta_xml = os.path.join(f"./xmls/{k}", xml)
@@ -62,7 +55,8 @@ for k, v in {'ñ1': ñ1}.items():
                 'total_no_fiscal': ['',0.00]
             }
             html = 'O.html'
-
+        context.update(d)
+        
         template_env = jinja2.Environment(loader=jinja2.FileSystemLoader('./template'))
         template = template_env.get_template(html)
 
@@ -70,10 +64,3 @@ for k, v in {'ñ1': ñ1}.items():
         config = pdfkit.configuration(wkhtmltopdf='/usr/local/bin/wkhtmltopdf')
         ubicacion = f'./assets/pdfs/{k}/' + f'{numero_z}.pdf'
         pdfkit.from_string(template.render(context), ubicacion, configuration=config)
-        #esta es toda la linea para convertir pdf en imagen
-        #primero seleccionamos el pdf, agregamos resolution porque la imagen sino sale comprimida
-        with Image(filename=ubicacion, resolution=300) as img:
-            #definimos el formato al que queremos convertir 
-            img.format = 'jpeg'
-            #guardamos asignamos nombre del archivo, no se porque seguida del formato
-            img.save(filename=f'./assets/imgs/{k}/{numero_z}.jpeg')

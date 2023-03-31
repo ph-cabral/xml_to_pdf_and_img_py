@@ -41,20 +41,16 @@ def B(Documento):
     totales = Documento.getElementsByTagName('CierreDiarioTotales')
     gravado_b = totales[0].getElementsByTagName('TotalGravado')[0].firstChild.data.strip()
     gravado_global = totales[1].getElementsByTagName('TotalGravado')[0].firstChild.data.strip()
+    total_final = totales[0].getElementsByTagName('TotalFinal')[0].firstChild.data.strip()
+    
 
 
     no_gravado_b = totales[0].getElementsByTagName('TotalNoGravado')[0].firstChild.data.strip()
     no_gravado_global = totales[1].getElementsByTagName('TotalNoGravado')[0].firstChild.data.strip()
 
-
-    ######### ver, los tickes que vi dicen importe gfinal de comprobantes no fiscales 0, cuando haya
-    ######### 1 que no sea 0 hay que ver cual de los siguientes es 
     exento_b = totales[0].getElementsByTagName('TotalExento')[0].firstChild.data.strip()
     exento_global = totales[0].getElementsByTagName('TotalExento')[0].firstChild.data.strip()
 
-
-    ######### ver, los tickes que vi dicen importe gfinal de comprobantes no fiscales 0, cuando haya
-    ######### 1 que no sea 0 hay que ver cual de los siguientes es 
     descuentos_b = totales[0].getElementsByTagName('TotalBonificaciones')[0].firstChild.data.strip()
     descuentos_global = totales[1].getElementsByTagName('TotalBonificaciones')[0].firstChild.data.strip()
 
@@ -64,14 +60,6 @@ def B(Documento):
 
 
     importe_total_b = totales[0].getElementsByTagName('TotalFinal')[0].firstChild.data.strip()
-    # importe_total_ = totales[2].getElementsByTagName('TotalFinal')[0].firstChild.data.strip()
-
-
-    ######### ver, los tickes que vi dicen importe gfinal de comprobantes no fiscales 0, cuando haya
-    ######### 1 que no sea 0 hay que ver cual de los siguientes es 
-    # importe_total = totales[3].getElementsByTagName('TotalFinal')[0].firstChild.data.strip()
-    # importe_total = totales[4].getElementsByTagName('TotalFinal')[0].firstChild.data.strip()
-
 
     # B  0=21 ,1=10 
     # A 2=10 ,3=21 
@@ -89,56 +77,33 @@ def B(Documento):
 
 
     if len(totalivas) == 2:
-        disciminacion_iva_b1 = [totalivas[0][0], totalivas[0][1]]
-        disciminacion_iva_b2 = ['','']
-        disciminacion_iva_global1 = [totalivas[1][0], totalivas[1][1]]
-        disciminacion_iva_global2 = ['','']
-            
+        if totalivas[0][0] == '10.5%':
+            disciminacion_iva_b1 = [totalivas[0][0], totalivas[0][1]]
+            disciminacion_iva_b2 = ['21%', 0.00]
+            disciminacion_iva_global1 = [totalivas[1][0], totalivas[1][1]]
+            disciminacion_iva_global2 = ['21%', 0.00]
+        else:
+            disciminacion_iva_b1 = ['10.5%', 0.00]
+            disciminacion_iva_b2 = [totalivas[0][0], totalivas[0][1]]
+            disciminacion_iva_global1 = ['10.5%', 0.00]
+            disciminacion_iva_global2 = [totalivas[1][0], totalivas[1][1]]
     else:
         try:
             disciminacion_iva_b1 = [totalivas[0][0], totalivas[0][1]]
         except IndexError:
-            disciminacion_iva_b1 = 0.00
+            disciminacion_iva_b1 = ['10.5%', 0.00]
         try:
             disciminacion_iva_b2 = [totalivas[1][0], totalivas[1][1]]
         except IndexError:
-            disciminacion_iva_b2 = 0.00
+            disciminacion_iva_b2 = ['21%', 0.00]
         try:
             disciminacion_iva_global1 = [totalivas[2][0], totalivas[2][1]]
         except IndexError:
-            disciminacion_iva_global1 = 0.00
+            disciminacion_iva_global1 = ['10.5', 0.00]
         try:
             disciminacion_iva_global2 = [totalivas[3][0], totalivas[3][1]]
         except IndexError:
-            disciminacion_iva_global2 = 0.00
-         
-    # try:
-    #     # tasa_iva_b1 = iva[0].getElementsByTagName('TasaIVA')[0].firstChild.data.strip()
-    #     disciminacion_iva_b1 = iva[0].getElementsByTagName('TotalIVA')[0].firstChild.data.strip()
-    # except IndexError:
-    #     # tasa_iva_b1 = 0.00
-    #     disciminacion_iva_b1 = 0.00
-    # try:
-    #     # tasa_iva_b2 = iva[1].getElementsByTagName('TasaIVA')[0].firstChild.data.strip()
-    #     # if disciminacion_iva_b1 == iva[1].getElementsByTagName('TotalIVA')[0].firstChild.data.strip():
-    #         # print('es el mismo')
-    #     disciminacion_iva_b2 = iva[1].getElementsByTagName('TotalIVA')[0].firstChild.data.strip()
-    # except IndexError:
-    #     # tasa_iva_b2 = 0.00
-    #     disciminacion_iva_b2 = 0.00
-    # try:
-    #     # tasa_iva_global1 = iva[4].getElementsByTagName('TasaIVA')[0].firstChild.data.strip()
-    #     disciminacion_iva_global1 = iva[2].getElementsByTagName('TotalIVA')[0].firstChild.data.strip()
-    # except IndexError:
-    #     # tasa_iva_global1 = 0.00
-    #     disciminacion_iva_global1 = 0.00
-    # try:
-    #     # tasa_iva_global2 = iva[5].getElementsByTagName('TasaIVA')[0].firstChild.data.strip()
-    #     disciminacion_iva_global2 = iva[3].getElementsByTagName('TotalIVA')[0].firstChild.data.strip()
-    # except IndexError:
-    #     # tasa_iva_global2 = 0.00
-    #     disciminacion_iva_global2 = 0.00
-    
+            disciminacion_iva_global2 = ['21%', 0.00]         
     
     B = {
         # B
@@ -169,6 +134,7 @@ def B(Documento):
         'primer_detalle': primer_detalle,
         'ultimo_detalle': ultimo_detalle,
         'generado_detalle': generado_detalle,
+        'total_final': total_final
     }
 
     return B
